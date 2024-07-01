@@ -1,0 +1,50 @@
+.duration__slider {
+  width: 100%;
+}
+
+.duration__slider .duration {
+  text-align: center;
+}
+
+.duration__slider .slider {
+  display: flex;
+  justify-content: center;
+}
+
+.out__btn__section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.out__btn__section .btn__name {
+  color: #383838;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 설정 */
+  overflow: hidden; /* 오버플로우된 텍스트를 잘리도록 설정 */
+  text-overflow: ellipsis; /* 오버플로우된 텍스트를 ...으로 표시 */
+}
+
+.out__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  margin-bottom: 16px;
+  margin: 0 10px;
+  border: 1px solid #f2f2f2;
+  text-align: center;
+  width: 32%;
+  height: 40%;
+  color: #383838 !important;
+}
+
+.out__btn:hover {
+  border: 1px solid #383838 !important;
+  background-color: #f2f2f2 !important;
+  cursor: pointer;
+}
