@@ -14,7 +14,7 @@
 /* Layout */
 .layout {
   min-height: 100vh;
-  min-width: 400px;
+  min-width: 100%;
 }
 
 .header {
@@ -56,7 +56,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20;
+  margin-bottom: 10;
 }
 
 .content .title {
@@ -69,6 +69,9 @@
   margin-bottom: 1%;
   padding: 16px;
   line-height: normal;
+  white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 설정 */
+  overflow: hidden; /* 오버플로우된 텍스트를 잘리도록 설정 */
+  text-overflow: ellipsis; /* 오버플로우된 텍스트를 ...으로 표시 */
 }
 
 .content .video__upload__section {
@@ -79,7 +82,7 @@
 }
 
 .content .plz__upload__video {
-  margin-bottom: 32;
+  margin-bottom: 32px;
   width: 60vw;
 }
 
@@ -109,7 +112,7 @@
 }
 
 .re__upload__div {
-  margin-right: 20%;
+  margin: 0 20%;
 }
 
 .re__upload__btn,
@@ -139,7 +142,6 @@
   color: #383838 !important;
 }
 
-/* TODO: conversion__btn들 화면 폭 좁아지면 가운데 정렬 깨짐 */
 .conversion__btn__container {
   margin-right: 0 10%;
 }

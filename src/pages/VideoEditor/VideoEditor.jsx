@@ -141,14 +141,13 @@ const VideoEditor = () => {
                       style={{ display: "none" }}
                       ref={uploadFile}
                     />
-                    <div>
-                      <Button
-                        className={styles.re__upload__btn}
-                        onClick={() => uploadFile.current.click()}
-                      >
-                        reupload
-                      </Button>
-                    </div>
+
+                    <Button
+                      className={styles.re__upload__btn}
+                      onClick={() => uploadFile.current.click()}
+                    >
+                      reupload
+                    </Button>
                   </div>
                 )}
               </div>

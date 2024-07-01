@@ -13,8 +13,9 @@
 
 .out__btn__section {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  margin: 0 16%;
 }
 
 .out__btn__section .btn__name {
