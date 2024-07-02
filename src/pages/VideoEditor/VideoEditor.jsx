@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
+import Loading from "./Loading";
 import VElogo from "../../assets/logo.png";
 import styles from "./VideoEditor.module.css";
-import { Button, Spinner } from "react-bootstrap";
 import { Layout, Flex } from "antd";
 import { VideoPlayer } from "../../components/VideoPlayer/VideoPlayer";
 import MultiRangeSlider from "../../components/DurationSlider/MultiRangeSlider";
@@ -99,14 +99,7 @@ const VideoEditor = () => {
     setPlayed(progress.playedSeconds);
   };
 
-  if (!ffmpegLoaded)
-    return (
-      <div className={styles.yet__ffmpeg__loading}>
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      </div>
-    );
+  if (!ffmpegLoaded) return <Loading />;
 
   return (
     <Flex gap="middle" wrap>
@@ -117,7 +110,6 @@ const VideoEditor = () => {
         <Content className={styles.content}>
           <div className={styles.div1}>
             <article className={styles.layout__article}>
-              {/* <h1 className={styles.title}>Video Edit</h1> */}
               <VideoUploader
                 videoFile={videoFile}
                 setVideoFile={setVideoFile}
