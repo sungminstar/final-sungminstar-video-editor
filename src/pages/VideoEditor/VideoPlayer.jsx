@@ -7,6 +7,7 @@ import {
 } from "video-react";
 import "video-react/dist/video-react.css";
 import { useEffect, useRef, useState } from "react";
+import styles from "./VideoPlayer.module.css";
 
 export function VideoPlayer({
   src,
@@ -37,15 +38,7 @@ export function VideoPlayer({
   }, [player]);
 
   return (
-    <div
-      className={"video-player"}
-      style={{
-        width: "60vw",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div className={styles.videoPlayerContainer}>
       <Player
         ref={(player) => {
           setPlayer(player);
@@ -55,7 +48,6 @@ export function VideoPlayer({
       >
         <source src={source} />
         <BigPlayButton position="center" />
-
         <LoadingSpinner />
         <ControlBar disableCompletely></ControlBar>
       </Player>

@@ -1,18 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import VElogo from "../../assets/logo.png";
-import plz_video_upload from "../../assets/plz_video_upload.png";
 import styles from "./VideoEditor.module.css";
-import { Button, Modal, ToastContainer, Toast, Spinner } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { Layout, Flex } from "antd";
 import { VideoPlayer } from "./VideoPlayer";
 import MultiRangeSlider from "../../components/DurationSlider/MultiRangeSlider";
 import { createFFmpeg } from "@ffmpeg/ffmpeg";
 import VideoConversionButton from "../../components/VideoConversionButtons/VideoConversionButton";
-import "react-circular-progressbar/dist/styles.css";
 import { sliderValueToVideoTime } from "../../utils/utils";
 import VideoDuration from "../../components/DurationSlider/VideoDuration";
 import ToastMessage from "../../components/ToastModal/ToastMessage";
 import ProgressModal from "../../components/ToastModal/ProgressModal";
+import VideoUploader from "./VideoUploader";
 
 const { Header, Footer, Content } = Layout;
 const ffmpeg = createFFmpeg({ log: true });
@@ -29,7 +28,6 @@ const VideoEditor = () => {
   const [show, setShow] = useState(false);
   const [ffmpegLoaded, setFFmpegLoaded] = useState(false);
   const videoRef = useRef(null);
-  const uploadFile = useRef(null);
 
   useEffect(() => {
     const onProgress = ({ ratio }) => {
@@ -43,13 +41,9 @@ const VideoEditor = () => {
     };
   }, []);
 
-  /* 편집 화면 실시간 확인 기능
-    비디오 시작 : 슬라이더 시작점 : minTime
-    비디오 끝  : 슬라이더 끝지점 : maxTime  */
   useEffect(() => {
     if (videoPlayer && videoPlayerState) {
       const [min, max] = sliderValues;
-
       const minTime = sliderValueToVideoTime(videoPlayerState.duration, min);
       const maxTime = sliderValueToVideoTime(videoPlayerState.duration, max);
 
@@ -59,13 +53,9 @@ const VideoEditor = () => {
       if (videoPlayerState.currentTime > maxTime) {
         videoPlayer.seek(maxTime);
       }
-
-      // videoPlayer.seek(sliderValueToVideoTime(videoPlayerState.duration, min));
-      // 이거 있으면 렌더링이 업로드가 늦어짐
     }
   }, [videoPlayerState]);
 
-  /* 비디오 파일 업로드 File -> URL */
   useEffect(() => {
     if (videoFile) {
       const url = URL.createObjectURL(videoFile);
@@ -73,7 +63,6 @@ const VideoEditor = () => {
     }
   }, [videoFile]);
 
-  /* 비디오 메타 데이터 로드 -> 전체 지속 시간 설정 */
   const handleLoadedMetadata = () => {
     if (videoRef.current) {
       setDuration(videoRef.current.duration);
@@ -94,7 +83,6 @@ const VideoEditor = () => {
     }
   }, [videoFile]);
 
-  /* 비디오의 선택된 부분의 지속 시간 */
   const calculateSelectedDuration = () => {
     if (!duration) return 0;
     const [start, end] = sliderValues;
@@ -103,7 +91,6 @@ const VideoEditor = () => {
     return endTime - startTime;
   };
 
-  /* 슬라이더 값 업데이트 */
   const handleSliderChange = ({ min, max }) => {
     setSliderValues([min, max]);
   };
@@ -120,6 +107,7 @@ const VideoEditor = () => {
         </Spinner>
       </div>
     );
+
   return (
     <Flex gap="middle" wrap>
       <Layout className={styles.layout}>
@@ -129,68 +117,26 @@ const VideoEditor = () => {
         <Content className={styles.content}>
           <div className={styles.div1}>
             <article className={styles.layout__article}>
-              <div className={styles.div2}>
-                <h1 className={styles.title}>Video Edit</h1>
-                {videoFile && (
-                  <div className={styles.re__upload__div}>
-                    <input
-                      onChange={(e) => setVideoFile(e.target.files[0])}
-                      type="file"
-                      accept="video/*"
-                      style={{ display: "none" }}
-                      ref={uploadFile}
-                    />
-
-                    <Button
-                      className={styles.re__upload__btn}
-                      onClick={() => uploadFile.current.click()}
-                    >
-                      reupload
-                    </Button>
-                  </div>
-                )}
-              </div>
+              {/* <h1 className={styles.title}>Video Edit</h1> */}
+              <VideoUploader
+                videoFile={videoFile}
+                setVideoFile={setVideoFile}
+              />
               <section className={styles.video__upload__section}>
                 {videoFile ? (
-                  <div>
-                    <VideoPlayer
-                      src={videoFile}
-                      ref={setVideoPlayer}
-                      onPlayerChange={(videoPlayer) =>
-                        setVideoPlayer(videoPlayer)
-                      }
-                      onChange={(videoPlayerState) =>
-                        setVideoPlayerState(videoPlayerState)
-                      }
-                      onProgress={handleProgress}
-                    />
-                  </div>
-                ) : (
-                  <>
-                    <img
-                      className={styles.plz__upload__video}
-                      src={plz_video_upload}
-                      alt="Please upload"
-                    />
-                    <div>
-                      <input
-                        onChange={(e) => setVideoFile(e.target.files[0])}
-                        type="file"
-                        accept="video/*"
-                        style={{ display: "none" }}
-                        ref={uploadFile}
-                      />
-                      <Button
-                        className={styles.upload__btn}
-                        onClick={() => uploadFile.current.click()}
-                      >
-                        Video Upload
-                      </Button>
-                    </div>
-                  </>
-                )}
+                  <VideoPlayer
+                    src={videoFile}
+                    ref={setVideoPlayer}
+                    onPlayerChange={(videoPlayer) =>
+                      setVideoPlayer(videoPlayer)
+                    }
+                    onChange={(videoPlayerState) =>
+                      setVideoPlayerState(videoPlayerState)
+                    }
+                    onProgress={handleProgress}
+                  />
+                ) : null}
               </section>
-
               {videoFile && (
                 <>
                   <section className={styles.duration__slider}>

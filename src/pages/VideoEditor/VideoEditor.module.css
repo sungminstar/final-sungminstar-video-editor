@@ -18,7 +18,7 @@
   margin-bottom: 1%;
 }
 
-/* Layout */
+/* layout */
 .layout {
   min-height: 100vh;
   min-width: 100vw;
@@ -51,106 +51,11 @@
 }
 
 /* Content */
-/* TODO: 비디오 업로드 전/후 묘하게 변화 있음. 비디오 유무 차이만 있도록 스타일링 할 것 */
 .content .div1 {
   min-height: 280;
 }
 .content .layout__article {
   padding: 48px 16px;
-}
-
-.content .div2 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10;
-}
-
-.content .title {
-  color: #8b8b8b;
-  margin-left: 20%;
-  font-family: SUIT;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 350;
-  padding: 16px;
-  line-height: normal;
-  white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 설정 */
-  overflow: hidden; /* 오버플로우된 텍스트를 잘리도록 설정 */
-  text-overflow: ellipsis; /* 오버플로우된 텍스트를 ...으로 표시 */
-}
-
-.content .video__upload__section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 0px;
-}
-
-.content .plz__upload__video {
-  margin-bottom: 32px;
-  width: 60vw;
-}
-
-.content .upload__btn {
-  width: 60vw;
-  border-radius: 8px;
-  background: #383838 !important;
-  padding: 16px 8px;
-  color: #f2f2f2 !important;
-  text-align: center;
-  font-family: SUIT, sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  border: 1px solid #383838 !important;
-  outline: none;
-}
-
-.upload__btn:hover,
-.upload__btn:focus,
-.upload__btn:active {
-  background: #f2f2f2 !important;
-  border: 1px solid #383838 !important;
-  color: #383838 !important;
-  outline: none;
-}
-
-.re__upload__div {
-  margin: 0 20%;
-}
-
-.re__upload__btn,
-.upload__cancel__btn {
-  border-radius: 8px;
-  background: #383838 !important;
-  padding: 6px;
-  color: #f2f2f2 !important;
-  text-align: center;
-  font-family: SUIT, sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  border: 1px solid #383838 !important;
-  line-height: normal;
-}
-
-.re__upload__btn:hover,
-.re__upload__btn:focus,
-.re__upload__btn:active,
-.upload__cancel__btn:hover,
-.upload__cancel__btn:focus,
-.upload__cancel__btn:active {
-  background: #f2f2f2 !important;
-  border: 1px solid #383838 !important;
-  outline: none;
-  color: #383838 !important;
-}
-
-.conversion__btn__container {
-  margin-right: 0 10%;
 }
 
 /* duration-slider */
