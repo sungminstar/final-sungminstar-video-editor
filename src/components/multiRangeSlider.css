@@ -6,16 +6,9 @@
 .slider:hover {
   cursor: pointer;
 }
-
-.slider__track,
-.slider__range,
-.slider__left-value,
-.slider__right-value {
-  position: absolute;
-}
-
 .slider__track,
 .slider__range {
+  position: absolute;
   border-radius: 3px;
   height: 5px;
 }
@@ -29,13 +22,14 @@
 .slider__range {
   background-color: #383838;
   z-index: 2;
-  position: absolute;
+  left: 0; /* 좌측 정렬 */
 }
 
 .slider__left-value,
 .slider__right-value {
   font-size: 12px;
   margin-top: 20px;
+  position: absolute;
 }
 
 .slider__left-value {
@@ -43,7 +37,7 @@
 }
 
 .slider__right-value {
-  right: -4px;
+  right: 6px;
 }
 
 /* Removing the default appearance */
@@ -59,7 +53,8 @@
   height: 0;
   width: 350px;
   outline: none;
-  left: 24%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .thumb--zindex-3 {
@@ -74,7 +69,6 @@
   z-index: 5;
 }
 
-/* For Chrome browsers */
 .thumb::-webkit-slider-thumb {
   background-color: #383838;
   border: none;

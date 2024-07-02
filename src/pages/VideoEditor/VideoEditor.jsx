@@ -13,7 +13,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { sliderValueToVideoTime } from "../../utils/utils";
 import { CheckCircleOutlined } from "@ant-design/icons";
 import VideoDuration from "../../components/VideoDuration";
-
+import Slider from "antd";
 const { Header, Footer, Content } = Layout;
 const ffmpeg = createFFmpeg({ log: true });
 
