@@ -12,7 +12,7 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { sliderValueToVideoTime } from "../../utils/utils";
 import { CheckCircleOutlined } from "@ant-design/icons";
-import { onConversionStart } from "./VideoConversionButton";
+import VideoDuration from "../../components/VideoDuration";
 
 const { Header, Footer, Content } = Layout;
 const ffmpeg = createFFmpeg({ log: true });
@@ -193,30 +193,10 @@ const VideoEditor = () => {
                     <div className={styles.duration}>
                       {duration && (
                         <div>
-                          Total Duration :{" "}
-                          {Math.floor(calculateSelectedDuration() / 60 / 60)
-                            .toString()
-                            .padStart(2, "0")}{" "}
-                          :{" "}
-                          {Math.floor((calculateSelectedDuration() / 60) % 60)
-                            .toString()
-                            .padStart(2, "0")}{" "}
-                          :{" "}
-                          {Math.floor(calculateSelectedDuration() % 60)
-                            .toString()
-                            .padStart(2, "0")}{" "}
-                          /{" "}
-                          {Math.floor(duration / 60 / 60)
-                            .toString()
-                            .padStart(2, "0")}{" "}
-                          :{" "}
-                          {Math.floor((duration / 60) % 60)
-                            .toString()
-                            .padStart(2, "0")}{" "}
-                          :{" "}
-                          {Math.floor(duration % 60)
-                            .toString()
-                            .padStart(2, "0")}{" "}
+                          <VideoDuration
+                            selectedDuration={calculateSelectedDuration()}
+                            totalDuration={duration}
+                          />{" "}
                         </div>
                       )}
                     </div>
