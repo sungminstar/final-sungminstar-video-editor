@@ -194,16 +194,14 @@ const VideoEditor = () => {
               {videoFile && (
                 <>
                   <section className={styles.duration__slider}>
-                    <div className={styles.duration}>
-                      {duration && (
-                        <div>
-                          <VideoDuration
-                            selectedDuration={calculateSelectedDuration()}
-                            totalDuration={duration}
-                          />{" "}
-                        </div>
-                      )}
-                    </div>
+                    {duration && (
+                      <div className={styles.duration}>
+                        <VideoDuration
+                          selectedDuration={calculateSelectedDuration()}
+                          totalDuration={duration}
+                        />{" "}
+                      </div>
+                    )}
                     {/* TODO: track과 thumb 불일치  */}
                     <div className={styles.slider}>
                       <MultiRangeSlider

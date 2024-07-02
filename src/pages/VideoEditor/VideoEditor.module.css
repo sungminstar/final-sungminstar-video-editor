@@ -85,6 +85,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0px;
 }
 
 .content .plz__upload__video {
@@ -154,22 +155,19 @@
 
 /* duration-slider */
 .duration__slider {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  margin-top: 30;
-  margin-bottom: 62;
-}
-
-.duration {
-  text-align: center;
 }
 
 .slider {
   display: flex;
   justify-content: center;
-  margin-bottom: 8%;
+  margin-top: 0;
+  margin-bottom: 4%;
 }
 
-/* Modal */
+/* modal */
 .modal {
   text-align: center;
 }

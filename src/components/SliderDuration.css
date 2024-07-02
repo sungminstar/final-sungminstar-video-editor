@@ -1,3 +1,11 @@
+/* duration.css */
+.duration {
+  text-align: center;
+  color: #383838;
+  height: 68px;
+}
+
+/* slider.css */
 .slider {
   position: relative;
   width: 350px;

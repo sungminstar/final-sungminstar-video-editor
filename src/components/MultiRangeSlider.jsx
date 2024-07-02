@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 import classnames from "classnames";
-import "./multiRangeSlider.css";
+import "./SliderDuration.css";
 /* 비디오 재생 시간 멀티 슬라이더 0 ~ 100 */
 export default function MultiRangeSlider({ min, max, onChange, disabled }) {
   const [minVal, setMinVal] = useState(min);
