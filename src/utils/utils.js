@@ -1,3 +1,5 @@
+/* sliderValue(0~100) != duration(video) 
+    따라서 슬라이더 값을 비디오 재생 시간 단위로 변경 */
 export function sliderValueToVideoTime(duration, sliderValue) {
   return Math.round((duration * sliderValue) / 100);
 }
@@ -7,26 +9,16 @@ export const toTimeString = (sec, showMilliSeconds = true) => {
   let hours = Math.floor(sec / 3600);
   let minutes = Math.floor((sec - hours * 3600) / 60);
   let seconds = sec - hours * 3600 - minutes * 60;
-  if (hours < 10) {
-    hours = "0" + hours;
-  }
-  if (minutes < 10) {
-    minutes = "0" + minutes;
-  }
-  if (seconds < 10) {
-    seconds = "0" + seconds;
-  }
-  let maltissaRegex = /\..*$/;
 
-  let millisec = String(seconds).match(maltissaRegex);
-  return (
-    hours +
-    ":" +
-    minutes +
-    ":" +
-    String(seconds).replace(maltissaRegex, "") +
-    (showMilliSeconds ? (millisec ? millisec[0] : ".000") : "")
-  );
+  hours = hours.toString().padStart(2, "0");
+  minutes = minutes.toString().padStart(2, "0");
+  seconds = seconds.toFixed(showMilliSeconds ? 2 : 0);
+
+  let milliseconds = showMilliSeconds ? seconds.slice(-2) : "";
+
+  seconds = seconds.slice(0, -3);
+
+  return `${hours}:${minutes}:${seconds}.${milliseconds}`;
 };
 
 export const readFileAsBase64 = async (file) => {
