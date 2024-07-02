@@ -9,17 +9,15 @@ export default function MultiRangeSlider({ min, max, onChange, disabled }) {
   const maxValRef = useRef(null);
   const range = useRef(null);
 
-  // Convert to percentage
   const getPercent = useCallback(
     (value) => Math.round(((value - min) / (max - min)) * 100),
     [min, max]
   );
 
-  // Set width of the range to decrease from the left side
   useEffect(() => {
     if (maxValRef.current) {
       const minPercent = getPercent(minVal);
-      const maxPercent = getPercent(+maxValRef.current.value); // Precede with '+' to convert the value from type string to type number
+      const maxPercent = getPercent(+maxValRef.current.value);
 
       if (range.current) {
         range.current.style.left = `${minPercent}%`;
@@ -28,7 +26,6 @@ export default function MultiRangeSlider({ min, max, onChange, disabled }) {
     }
   }, [minVal, getPercent]);
 
-  // Set width of the range to decrease from the right side
   useEffect(() => {
     if (minValRef.current) {
       const minPercent = getPercent(+minValRef.current.value);
@@ -40,7 +37,6 @@ export default function MultiRangeSlider({ min, max, onChange, disabled }) {
     }
   }, [maxVal, getPercent]);
 
-  // Get min and max values when their state changes
   useEffect(() => {
     onChange({ min: minVal, max: maxVal });
   }, [minVal, maxVal]);
@@ -79,8 +75,6 @@ export default function MultiRangeSlider({ min, max, onChange, disabled }) {
       <div className="slider">
         <div className="slider__track"></div>
         <div ref={range} className="slider__range"></div>
-        {/* <div className="slider__left-value">{minVal}</div>
-        <div className="slider__right-value">{maxVal}</div> */}
       </div>
     </div>
   );

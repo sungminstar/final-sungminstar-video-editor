@@ -14,11 +14,11 @@
 /* Layout */
 .layout {
   min-height: 100vh;
-  min-width: 100%;
+  min-width: 100vw;
 }
 
 .header {
-  height: 64;
+  height: 8vh;
   display: flex;
   align-items: center;
   line-height: 64px;
@@ -40,12 +40,12 @@
   align-items: center;
   justify-content: center;
   background-color: #4f4f4f;
+  min-height: 8vh;
 }
 
 /* Content */
 /* TODO: 비디오 업로드 전/후 묘하게 변화 있음. 비디오 유무 차이만 있도록 스타일링 할 것 */
 .content .div1 {
-  padding: 24;
   min-height: 280;
 }
 .content .layout__article {
@@ -66,7 +66,6 @@
   font-size: 20px;
   font-style: normal;
   font-weight: 350;
-  margin-bottom: 1%;
   padding: 16px;
   line-height: normal;
   white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 설정 */
@@ -119,11 +118,11 @@
 .upload__cancel__btn {
   border-radius: 8px;
   background: #383838 !important;
-  padding: 8px;
+  padding: 6px;
   color: #f2f2f2 !important;
   text-align: center;
   font-family: SUIT, sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 700;
   border: 1px solid #383838 !important;

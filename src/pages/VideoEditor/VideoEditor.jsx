@@ -45,8 +45,6 @@ const VideoEditor = () => {
 
   useEffect(() => {
     const min = sliderValues[0];
-    // when the slider values are updated, updating the
-    // video time
     if (min !== undefined && videoPlayerState && videoPlayer) {
       videoPlayer.seek(sliderValueToVideoTime(videoPlayerState.duration, min));
     }
@@ -54,8 +52,6 @@ const VideoEditor = () => {
 
   useEffect(() => {
     if (videoPlayer && videoPlayerState) {
-      // allowing users to watch only the portion of
-      // the video selected by the slider
       const [min, max] = sliderValues;
 
       const minTime = sliderValueToVideoTime(videoPlayerState.duration, min);
@@ -65,7 +61,6 @@ const VideoEditor = () => {
         videoPlayer.seek(minTime);
       }
       if (videoPlayerState.currentTime > maxTime) {
-        // looping logic
         videoPlayer.seek(minTime);
       }
     }
