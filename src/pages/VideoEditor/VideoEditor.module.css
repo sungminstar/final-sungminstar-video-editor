@@ -1,3 +1,10 @@
+.yet__ffmpeg__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 화면 전체 높이 */
+}
+
 /* logo */
 .img__header {
   width: 32px;

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import VElogo from "../../assets/logo.png";
 import plz_video_upload from "../../assets/plz_video_upload.png";
 import styles from "./VideoEditor.module.css";
-import { Button, Modal, ToastContainer, Toast } from "react-bootstrap";
+import { Button, Modal, ToastContainer, Toast, Spinner } from "react-bootstrap";
 import { Layout, Flex } from "antd";
 import { VideoPlayer } from "./VideoPlayer";
 import MultiRangeSlider from "../../components/MultiRangeSlider";
@@ -112,8 +112,14 @@ const VideoEditor = () => {
     setPlayed(progress.playedSeconds);
   };
 
-  if (!ffmpegLoaded) return <div>Loading...</div>;
-
+  if (!ffmpegLoaded)
+    return (
+      <div className={styles.yet__ffmpeg__loading}>
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    );
   return (
     <Flex gap="middle" wrap>
       <Layout className={styles.layout}>
