@@ -1,0 +1,22 @@
+.modal {
+  text-align: center;
+}
+
+.modal__container {
+  display: block;
+  position: initial;
+}
+
+.progress__container {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+}
+
+.progress__text {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #383838;
+}

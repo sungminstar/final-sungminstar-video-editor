@@ -8,12 +8,12 @@ import { VideoPlayer } from "./VideoPlayer";
 import MultiRangeSlider from "../../components/DurationSlider/MultiRangeSlider";
 import { createFFmpeg } from "@ffmpeg/ffmpeg";
 import VideoConversionButton from "../../components/VideoConversionButtons/VideoConversionButton";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { sliderValueToVideoTime } from "../../utils/utils";
-import { CheckCircleOutlined } from "@ant-design/icons";
 import VideoDuration from "../../components/DurationSlider/VideoDuration";
-import Slider from "antd";
+import ToastMessage from "../../components/ToastModal/ToastMessage";
+import ProgressModal from "../../components/ToastModal/ProgressModal";
+
 const { Header, Footer, Content } = Layout;
 const ffmpeg = createFFmpeg({ log: true });
 
@@ -202,7 +202,6 @@ const VideoEditor = () => {
                         />{" "}
                       </div>
                     )}
-                    {/* TODO: track과 thumb 불일치  */}
                     <div className={styles.slider}>
                       <MultiRangeSlider
                         min={0}
@@ -214,11 +213,9 @@ const VideoEditor = () => {
                   <section className={styles.conversion__btn__container}>
                     <VideoConversionButton
                       onConversionStart={() => {
-                        setProgress(0);
                         setProcessing(true);
                       }}
                       onConversionEnd={() => {
-                        setProgress(0);
                         setProcessing(false);
                         setShow(true);
                       }}
@@ -230,58 +227,12 @@ const VideoEditor = () => {
                   </section>
                 </>
               )}
-              <ToastContainer
-                className="p-3"
-                position={"top-center"}
-                style={{ zIndex: 1 }}
-              >
-                <Toast
-                  onClose={() => setShow(false)}
-                  show={show}
-                  delay={2000}
-                  autohide
-                >
-                  <Toast.Body>
-                    {" "}
-                    <CheckCircleOutlined /> Export completed
-                  </Toast.Body>
-                </Toast>
-              </ToastContainer>
-              <Modal
-                className={styles.modal}
+              <ToastMessage show={show} onClose={() => setShow(false)} />
+              <ProgressModal
                 show={processing}
                 onHide={() => setProcessing(false)}
-                backdrop={false}
-                keyboard={false}
-                centered
-                size="sm"
-              >
-                <div className={styles.modal__container}>
-                  <Modal.Body>
-                    <div className={styles.progress__container}>
-                      <CircularProgressbar
-                        value={progress}
-                        text={`${progress}%`}
-                        styles={buildStyles({
-                          textSize: "16px",
-                          pathColor: "#383838",
-                          textColor: "#383838",
-                        })}
-                      />
-                    </div>
-                    <p className={styles.progress__text}>Export in progress</p>
-                  </Modal.Body>
-                  {/* <Modal.Footer>
-                    TODO: cancel 버튼 기능 구현 => 포기
-                    <Button
-                      className={styles.upload__cancel__btn}
-                      onClick={console.log("canceled")}
-                    >
-                      Cancel
-                    </Button>
-                  </Modal.Footer> */}
-                </div>
-              </Modal>
+                progress={progress}
+              />
             </article>
           </div>
         </Content>
