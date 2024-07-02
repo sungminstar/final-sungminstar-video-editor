@@ -43,13 +43,9 @@ const VideoEditor = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const min = sliderValues[0];
-    if (min !== undefined && videoPlayerState && videoPlayer) {
-      videoPlayer.seek(sliderValueToVideoTime(videoPlayerState.duration, min));
-    }
-  }, [sliderValues]);
-
+  /* 편집 화면 실시간 확인 기능
+    비디오 시작 : 슬라이더 시작점 : minTime
+    비디오 끝  : 슬라이더 끝지점 : maxTime  */
   useEffect(() => {
     if (videoPlayer && videoPlayerState) {
       const [min, max] = sliderValues;
@@ -61,11 +57,15 @@ const VideoEditor = () => {
         videoPlayer.seek(minTime);
       }
       if (videoPlayerState.currentTime > maxTime) {
-        videoPlayer.seek(minTime);
+        videoPlayer.seek(maxTime);
       }
+
+      // videoPlayer.seek(sliderValueToVideoTime(videoPlayerState.duration, min));
+      // 이거 있으면 렌더링이 업로드가 늦어짐
     }
   }, [videoPlayerState]);
 
+  /* 비디오 파일 업로드 File -> URL */
   useEffect(() => {
     if (videoFile) {
       const url = URL.createObjectURL(videoFile);
@@ -73,6 +73,7 @@ const VideoEditor = () => {
     }
   }, [videoFile]);
 
+  /* 비디오 메타 데이터 로드 -> 전체 지속 시간 설정 */
   const handleLoadedMetadata = () => {
     if (videoRef.current) {
       setDuration(videoRef.current.duration);
@@ -93,6 +94,7 @@ const VideoEditor = () => {
     }
   }, [videoFile]);
 
+  /* 비디오의 선택된 부분의 지속 시간 */
   const calculateSelectedDuration = () => {
     if (!duration) return 0;
     const [start, end] = sliderValues;
@@ -101,20 +103,16 @@ const VideoEditor = () => {
     return endTime - startTime;
   };
 
+  /* 슬라이더 값 업데이트 */
   const handleSliderChange = ({ min, max }) => {
     setSliderValues([min, max]);
-
-    if (videoPlayer && videoPlayerState) {
-      const minTime = sliderValueToVideoTime(videoPlayerState.duration, min);
-      videoPlayer.seek(minTime);
-    }
   };
-
-  if (!ffmpegLoaded) return <div>Loading...</div>;
 
   const handleProgress = (progress) => {
     setPlayed(progress.playedSeconds);
   };
+
+  if (!ffmpegLoaded) return <div>Loading...</div>;
 
   return (
     <Flex gap="middle" wrap>
