@@ -4,6 +4,7 @@ export function sliderValueToVideoTime(duration, sliderValue) {
   return Math.round((duration * sliderValue) / 100);
 }
 
+/* TotalDuration : selected / total => components/VideoDuration.jsx */
 export const toTimeString = (sec, showMilliSeconds = true) => {
   sec = parseFloat(sec);
   let hours = Math.floor(sec / 3600);
