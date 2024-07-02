@@ -10,7 +10,7 @@ const VideoUploader = ({ videoFile, setVideoFile }) => {
     <div className={styles.video__upload__section}>
       <div className={styles.title__reupload__container}>
         <h1 className={styles.title}>Video Edit</h1>
-        <div className={styles.space}></div> {/* 가운데 공간 추가 */}
+        <div className={styles.space}></div>
         {videoFile && (
           <Button
             className={styles.re__upload__btn}

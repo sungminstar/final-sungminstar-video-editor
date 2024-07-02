@@ -3,7 +3,7 @@ import VElogo from "../../assets/logo.png";
 import styles from "./VideoEditor.module.css";
 import { Button, Spinner } from "react-bootstrap";
 import { Layout, Flex } from "antd";
-import { VideoPlayer } from "./VideoPlayer";
+import { VideoPlayer } from "../../components/VideoPlayer/VideoPlayer";
 import MultiRangeSlider from "../../components/DurationSlider/MultiRangeSlider";
 import { createFFmpeg } from "@ffmpeg/ffmpeg";
 import VideoConversionButton from "../../components/VideoConversionButtons/VideoConversionButton";
@@ -11,7 +11,7 @@ import { sliderValueToVideoTime } from "../../utils/utils";
 import VideoDuration from "../../components/DurationSlider/VideoDuration";
 import ToastMessage from "../../components/ToastModal/ToastMessage";
 import ProgressModal from "../../components/ToastModal/ProgressModal";
-import VideoUploader from "./VideoUploader";
+import VideoUploader from "../../components/VideoUpload/VideoUploader";
 
 const { Header, Footer, Content } = Layout;
 const ffmpeg = createFFmpeg({ log: true });
