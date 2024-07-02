@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# 📹 ReactJS와 Bootstrap을 활용한 비디오 에디터 제작 프로젝트 📹
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. 요구사항 및 목표
 
-## Available Scripts
+이 프로젝트는 ReactJS와 Bootstrap을 활용하여 웹 브라우저상에서 비디오 편집 기능을 구현하는데 목적이 있다. 필수로 들어가야할 기능은 아래와 같다.
 
-In the project directory, you can run:
+- 비디오 업로드
 
-### `npm start`
+- 비디오 플레이어
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 비디오 편집
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+본 프로젝트의 개발 범위는 다음과 같습니다.
 
-### `npm test`
+> React.JS와 React-Bootstrap을 활용하여 비디오 에디터를 개발하고 배포한다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 2. 배포 및 파일 실행
 
-### `npm run build`
+[📹 Sungminstar's Video Editor 📹](https://final-sungminstar-videoedit.vercel.app/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+git clone https://github.com/sungminstar/refac-sungminstar-video-editor.git ~
+cd ~
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+npm install react-router-dom
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm install bootstrap
 
-### `npm run eject`
+npm install antd
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+npm install video-react react-player
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+npm install @ffmpeg/ffmpeg@0.11.5
+npm install @ffmpeg/core@0.11.0
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+npm install --save react-circular-progressbar
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 3. 참고
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 활용 라이브러리
+  - [react-bootstrap](https://react-bootstrap.netlify.app/)
+  - [react-router-dom](https://reactrouter.com/en/main)
+  - [react-player](https://www.npmjs.com/package/react-player)
+  - [antd](https://ant.design/)
+  - [react-circular-progressbar](https://www.npmjs.com/package/react-circular-progressbar)
+  - [ffmpeg](https://ffmpegwasm.netlify.app/)
+    - 버전 주의!
