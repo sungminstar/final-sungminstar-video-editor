@@ -49,17 +49,3 @@
 .content .layout__article {
   padding: 48px 16px;
 }
-
-/* duration-slider */
-.duration__slider {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.slider {
-  display: flex;
-  justify-content: center;
-  margin-top: 0;
-  margin-bottom: 4%;
-}

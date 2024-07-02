@@ -4,14 +4,12 @@ import VElogo from "../../assets/logo.png";
 import styles from "./VideoEditor.module.css";
 import { Layout, Flex } from "antd";
 import { VideoPlayer } from "../../components/VideoPlayer/VideoPlayer";
-import MultiRangeSlider from "../../components/DurationSlider/MultiRangeSlider";
 import { createFFmpeg } from "@ffmpeg/ffmpeg";
-import VideoConversionButton from "../../components/VideoConversionButtons/VideoConversionButton";
 import { sliderValueToVideoTime } from "../../utils/utils";
-import VideoDuration from "../../components/DurationSlider/VideoDuration";
 import ToastMessage from "../../components/ToastModal/ToastMessage";
 import ProgressModal from "../../components/ToastModal/ProgressModal";
 import VideoUploader from "../../components/VideoUpload/VideoUploader";
+import VideoEditSection from "../../components/VideoEdit/VideoEditSection";
 
 const { Header, Footer, Content } = Layout;
 const ffmpeg = createFFmpeg({ log: true });
@@ -130,40 +128,17 @@ const VideoEditor = () => {
                 ) : null}
               </section>
               {videoFile && (
-                <>
-                  <section className={styles.duration__slider}>
-                    {duration && (
-                      <div className={styles.duration}>
-                        <VideoDuration
-                          selectedDuration={calculateSelectedDuration()}
-                          totalDuration={duration}
-                        />{" "}
-                      </div>
-                    )}
-                    <div className={styles.slider}>
-                      <MultiRangeSlider
-                        min={0}
-                        max={100}
-                        onChange={handleSliderChange}
-                      />
-                    </div>
-                  </section>
-                  <section className={styles.conversion__btn__container}>
-                    <VideoConversionButton
-                      onConversionStart={() => {
-                        setProcessing(true);
-                      }}
-                      onConversionEnd={() => {
-                        setProcessing(false);
-                        setShow(true);
-                      }}
-                      ffmpeg={ffmpeg}
-                      videoPlayerState={videoPlayerState}
-                      sliderValues={sliderValues}
-                      videoFile={videoFile}
-                    />
-                  </section>
-                </>
+                <VideoEditSection
+                  duration={duration}
+                  sliderValues={sliderValues}
+                  handleSliderChange={handleSliderChange}
+                  calculateSelectedDuration={calculateSelectedDuration}
+                  setProcessing={setProcessing}
+                  setShow={setShow}
+                  ffmpeg={ffmpeg}
+                  videoPlayerState={videoPlayerState}
+                  videoFile={videoFile}
+                />
               )}
               <ToastMessage show={show} onClose={() => setShow(false)} />
               <ProgressModal
